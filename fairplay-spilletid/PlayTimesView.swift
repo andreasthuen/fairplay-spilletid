@@ -9,10 +9,14 @@ import SwiftUI
 
 struct PlayTimesView: View {
     let playTimes: [PlayerMatch]
+    let match: Match
     
     var body: some View {
-        List(playTimes, id: \.title ){ playTime in
-            PlayTimeView(playerMatch: playTime )
+        VStack{
+            MatchView(match: match)
+            List(playTimes, id: \.title ){ playTime in
+                PlayTimeView(playerMatch: playTime )
+            }
         }
     }
 }
@@ -20,7 +24,7 @@ struct PlayTimesView: View {
 
 struct PlayTimesView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayTimesView(playTimes: PlayerMatch.sampleData)
+        PlayTimesView(playTimes: PlayerMatch.sampleData, match: Match.sampleData[0])
     }
 }
 

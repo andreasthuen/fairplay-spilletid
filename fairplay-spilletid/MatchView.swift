@@ -15,31 +15,44 @@
 import SwiftUI
 struct MatchView: View {
     let match: Match
-    @State private var playing = false;
 
     var body: some View {
             
            VStack {
                HStack{
-                   Text(playerMatch.player.name)
-                   Toggle(isOn: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Is On@*/.constant(true)/*@END_MENU_TOKEN@*/) {
-                       /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Label@*/Text("Label")/*@END_MENU_TOKEN@*/
-                   }
+                       Text(match.title)
+                       .padding()
+                       Button("Start") {
+                           /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
+                       }
+                       .padding()
+                       Button("Stop") {
+                           /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
+                       }
+                       .padding()
+                       Button("Pause") {
+                           /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/ /*@END_MENU_TOKEN@*/
+                       }
+                       .padding()
+                       .background()
+                   
+                   //     Text(String(match.startTime))
+                
                }
                    
                
-               ProgressView(value: playerMatch.elapsedTime, total: playerMatch.match.totalTime)
+               ProgressView(value: match.elapsedTime, total: match.totalTime)
                HStack {
                    VStack(alignment: .leading) {
                        Text("Seconds Elapsed")
                            .font(.caption)
-                       Label(String(playerMatch.elapsedTime), systemImage: "hourglass.tophalf.fill")
+                       Label(String(match.elapsedTime), systemImage: "hourglass.tophalf.fill")
                    }
                    Spacer()
                    VStack(alignment: .trailing) {
                        Text("Seconds Remaining")
                            .font(.caption)
-                       Label(String(playerMatch.match.totalTime-playerMatch.match.elapsedTime), systemImage: "hourglass.bottomhalf.fill")
+                       Label(String(match.totalTime-match.elapsedTime), systemImage: "hourglass.bottomhalf.fill")
                    }
                }
                .accessibilityElement(children: .ignore)
@@ -52,6 +65,6 @@ struct MatchView: View {
 
 struct MatchView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayTimeView(playerMatch: PlayerMatch.sampleData[0])
+        MatchView(match: Match.sampleData[0])
     }
 }

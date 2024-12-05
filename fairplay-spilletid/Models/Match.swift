@@ -14,6 +14,7 @@ struct Match {
     var endTime: Date
     var totalTime: TimeInterval
     var elapsedTime: TimeInterval
+    var playing: Bool
 
 }
 
@@ -25,19 +26,22 @@ extension Match {
               startTime: Date.now,
               endTime: Date.now+TimeInterval(720),
               totalTime: TimeInterval(720),
-              elapsedTime: TimeInterval(200)
+              elapsedTime: TimeInterval(200),
+              playing: true
                ),
         Match(title: "Andre kamp",
               startTime: Date.now+TimeInterval(1440),
               endTime: Date.now+TimeInterval(2160),
               totalTime: TimeInterval(720),
-              elapsedTime: TimeInterval(500)
+              elapsedTime: TimeInterval(500),
+              playing: false
                ),
         Match(title: "Tredje kamp",
               startTime: Date.now+TimeInterval(2500),
               endTime: Date.now+TimeInterval(3220),
               totalTime: TimeInterval(720),
-              elapsedTime: TimeInterval(350)
+              elapsedTime: TimeInterval(350),
+              playing: true
                ),
 
     ]
